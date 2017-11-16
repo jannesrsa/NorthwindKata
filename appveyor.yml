@@ -1,0 +1,53 @@
+version: 1.0.{build}
+
+image: Visual Studio 2017
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: $(nuget_version)
+  package_version: $(nuget_version)
+
+configuration:
+- Release
+
+platform: Any CPU
+
+# scripts to run before build
+before_build:
+- appveyor-retry dotnet restore -v Minimal
+
+build:
+ project: NorthwindKata.sln
+ verbosity: minimal
+
+test_script:
+- ps: >- 
+    foreach($file in Get-ChildItem –Path C:\projects -Include *.pdb -Recurse)
+    {
+        Echo $file.FullName
+        Copy-Item $file.FullName -Destination C:\projects\
+    }
+- >-
+    OpenCover.Console.exe
+    -register:user
+    -target:"dotnet.exe"
+    -targetargs:""%APPVEYOR_BUILD_FOLDER%\src\nortwindkataTests\bin\Release\NorthwindKataRepository.dll""
+    -filter:"+[*]* -[*Tests]*"
+    -output:"%APPVEYOR_BUILD_FOLDER%\coverage.xml"
+    -excludebyattribute:*.ExcludeFromCodeCoverage*
+    -returntargetcode
+
+artifacts:
+  - path: 'coverage.xml'
+
+#after_test:
+#- pip install codecov 
+#- codecov -X gcov -f %APPVEYOR_BUILD_FOLDER%\coverage.xml
+
+cache:
+- packages -> **\packages.config      # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
