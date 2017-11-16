@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindKataRepository.Tests", "NorthwindKataRepository.Tests\NorthwindKataRepository.Tests.csproj", "{7DD29013-D620-4DB4-BD7B-AC666936575A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAB01287-13A0-4D37-B751-AC892C3D23D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB01287-13A0-4D37-B751-AC892C3D23D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB01287-13A0-4D37-B751-AC892C3D23D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD29013-D620-4DB4-BD7B-AC666936575A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD29013-D620-4DB4-BD7B-AC666936575A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD29013-D620-4DB4-BD7B-AC666936575A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD29013-D620-4DB4-BD7B-AC666936575A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

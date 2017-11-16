@@ -1,0 +1,28 @@
+using Xunit;
+
+namespace NorthwindKataRepository.Tests
+{
+    public class CalculatorHelperTests
+    {
+        [Theory]
+        [InlineData(-1, 1, 1)]
+        [InlineData(0, 1, 2)]
+        [InlineData(1, 3, 5)]
+        public void Test1(params int[] values)
+        {
+            // Arrange
+            var expected = default(int);
+            foreach (var value in values)
+            {
+                expected = expected + value;
+            }
+
+            // Action
+            var calcHelper = new CalculatorHelper();
+            var actual = calcHelper.Add(values);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+    }
+}
