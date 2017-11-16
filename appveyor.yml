@@ -33,22 +33,9 @@ build:
  project: NorthwindKata.sln
  verbosity: minimal
 
-# test_script:
-# - ps: >- 
-#     foreach($file in Get-ChildItem –Path C:\projects -Include *.pdb -Recurse)
-#     {
-#         Echo $file.FullName
-#         Copy-Item $file.FullName -Destination C:\projects\
-#     }
-# - >-
-#     OpenCover.Console.exe
-#     -register:user
-#     -target:"dotnet.exe"
-#     -targetargs:"test %APPVEYOR_BUILD_FOLDER%\NorthwindKata.sln"
-#     -filter:"+[*]* -[*Tests]*"
-#     -output:"%APPVEYOR_BUILD_FOLDER%\coverage.xml"
-#     -excludebyattribute:*.ExcludeFromCodeCoverage*
-#     -returntargetcode
+test_script:
+- >-
+    dotnet.exe test %APPVEYOR_BUILD_FOLDER%\NorthwindKata.sln
 
 artifacts:
   - path: 'coverage.xml'
