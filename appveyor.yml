@@ -36,7 +36,7 @@ test_script:
     OpenCover.Console.exe
     -register:user
     -target:"dotnet.exe"
-    -targetargs:"test "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository.Tests\NorthwindKataRepository.Tests.csproj""
+    -targetargs:"test "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository.sln""
     -filter:"+[*]* -[*Tests]*"
     -output:"%APPVEYOR_BUILD_FOLDER%\coverage.xml"
     -excludebyattribute:*.ExcludeFromCodeCoverage*
