@@ -34,8 +34,7 @@ build:
  verbosity: minimal
 
 test_script:
-- >-
-    dotnet.exe test %APPVEYOR_BUILD_FOLDER%\NorthwindKata.sln
+  dotnet xunit
 
 artifacts:
   - path: 'coverage.xml'
