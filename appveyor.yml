@@ -30,10 +30,10 @@ before_build:
 - appveyor-retry dotnet restore -v Minimal
 
 build_script:
-- dotnet build "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository\NorthwindKataRepository.csproj" -c %CONFIGURATION% --no-dependencies
+- dotnet build "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository\NorthwindKataRepository.csproj" -c %CONFIGURATION%
 
 test_script:
-- dotnet test "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository.Tests\NorthwindKataRepository.Tests.csproj" -c %CONFIGURATION% --no-build
+- dotnet test "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository.Tests\NorthwindKataRepository.Tests.csproj" -c %CONFIGURATION%
 
 # artifacts:
 #  - path: 'coverage.xml'
