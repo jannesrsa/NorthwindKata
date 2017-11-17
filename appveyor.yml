@@ -29,15 +29,14 @@ platform: Any CPU
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 
-build:
- project: NorthwindKata.sln
- verbosity: minimal
+build_script:
+- dotnet build "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository\NorthwindKataRepository.csproj" -c %CONFIGURATION% --no-dependencies
 
 test_script:
-  dotnet xunit
+- dotnet test "%APPVEYOR_BUILD_FOLDER%\NorthwindKataRepository.Tests\NorthwindKataRepository.Tests.csproj" -c %CONFIGURATION% --no-build
 
-artifacts:
-  - path: 'coverage.xml'
+# artifacts:
+#  - path: 'coverage.xml'
 
 #after_test:
 #- pip install codecov 
