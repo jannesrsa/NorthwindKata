@@ -43,16 +43,6 @@ namespace NorthwindKataRepository.Tests
                 var sql = categories.ToSql();
 
                 Console.WriteLine(sql);
-                Console.WriteLine();
-
-                var categoryNames = categories
-                    .AsEnumerable()
-                    .Select(name => $"Category Name: {name}");
-
-                foreach (var categoryName in categoryNames)
-                {
-                    Console.WriteLine(categoryName);
-                }
             }
         }
     }
