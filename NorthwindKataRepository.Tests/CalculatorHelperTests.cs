@@ -1,3 +1,7 @@
+using System;
+using System.Linq;
+using NorthwindKataRepository.Extensions;
+using NorthwindKataRepository.Models;
 using Xunit;
 
 namespace NorthwindKataRepository.Tests
@@ -23,6 +27,33 @@ namespace NorthwindKataRepository.Tests
 
             // Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void TestSql()
+        {
+            using (var db = new NorthwindContext())
+            {
+                var categories = db.Categories
+                    .Where(category => category.Products.Any())
+                    .OrderByDescending(blog => blog.CategoryId)
+                    .Take(5)
+                    .Select(blog => blog.CategoryName);
+
+                var sql = categories.ToSql();
+
+                Console.WriteLine(sql);
+                Console.WriteLine();
+
+                var categoryNames = categories
+                    .AsEnumerable()
+                    .Select(name => $"Category Name: {name}");
+
+                foreach (var categoryName in categoryNames)
+                {
+                    Console.WriteLine(categoryName);
+                }
+            }
         }
     }
 }
